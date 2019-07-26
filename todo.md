@@ -17,22 +17,29 @@
 ## Project todo 
 
 ## Milestone 1: Prepare data architecture documentation
-[] Make Entity Relationship Diagram (ERD).
+
+    [] Make Entity Relationship Diagram (ERD)
+    
     [] Friendship & Friendshiprequest
+    
     [] Make status of the friendship to tell if it is a request or confirmed friendship.
-[] Make profile iamges as a link to gravatar
-[] Make docs directory in repo and add ERD image
+    
+    [] Make profile iamges as a link to gravatar
+    
+    [] Make docs directory in repo and add ERD image
 
 ## Milestone 2: Project setup
-[] Setup project as it is described in above requirements.
+    [] Setup project as it is described in above requirements.
 
 ## Milestone 3: Users & posts
-[] Create models with associations and implement all requested features for users and posts. 
-[] Add authentication with Devise as described in requirements. Remember about unit and integrations tests!
+    [] Create models with associations and implement all requested features for users and posts. 
+    
+    [] Add authentication with Devise as described in requirements. Remember about unit and integrations tests!
 
 ## Milestone 4: Comments & likes
-[] Create models with associations and implement all requested features for comments and likes. 
-[] Write unit and integrations tests!
+    [] Create models with associations and implement all requested features for comments and likes. 
+    
+    [] Write unit and integrations tests!
 
 ## Milestone 5: Friendships v1
 ## Milestone 6: Friendships v2
