@@ -1,17 +1,24 @@
-# Odin Facebook
-A facebook clone project from Odin 
+# README
 
-## Technologies
-- Ruby 
-- Ruby on Rails
-- Heroku
-- MVP 
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-# Authors
-* **Afani Martin** - [afani martin](https://github.com/whiz25)
-* **Neer Thapa** - [NeerNim](https://github.com/NeerNim)
+Things you may want to cover:
 
-## License
+* Ruby version
 
-MIT License See
-[LICENSE.md](LICENSE.md) for details.
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
