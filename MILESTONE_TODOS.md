@@ -2,7 +2,7 @@
 
 - [x] Make Relationship Diagarm
 - [x] Project Setup with Postgres in Development, Test and Production
-- [ ] Setup Heroku for the prodution 
+- [x] Setup Heroku for the prodution 
 - [ ] Install necessary Gems 
     - [ ] Rspec
     - [ ] Faker
