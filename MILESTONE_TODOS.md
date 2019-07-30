@@ -3,13 +3,13 @@
 - [x] Make Relationship Diagarm
 - [x] Project Setup with Postgres in Development, Test and Production
 - [x] Setup Heroku for the prodution 
-- [ ] Install necessary Gems 
-    - [ ] Rspec
-    - [ ] Faker
-    - [ ] Guard
-    - [ ] Devise
-    - [ ] Omniauth
-    - [ ] Bootstrap
+- [x] Install necessary Gems 
+    - [x] Rspec
+    - [x] Faker
+    - [x] Guard
+    - [x] Devise
+    - [x] Omniauth
+    - [x] Bootstrap
 - [ ] Create models from ERD 
      - [ ] User
      - [ ] Post     
