@@ -10,14 +10,14 @@
     - [x] Devise
     - [x] Omniauth
     - [x] Bootstrap
-- [ ] Create models from ERD 
-     - [ ] User
-     - [ ] Post     
+- [x] Create models from ERD 
+     - [x] User
+     - [x] Post     
 - [ ] Write Unit Tests for the associations to have been properly setup
 - [ ] Write validation tests for all the models
-- [ ] Create Controllers and Action for
-    - [ ] Users
-    - [ ] Posts    
+- [x] Create Controllers and Action for
+    - [x] Users
+    - [x] Posts    
 - [ ] Write Integration Tests   
-- [ ] Make Sign In page using Devise
+- [x] Make Sign In page using Devise
 
