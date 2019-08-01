@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
        expect(user.errors.full_messages).to include("Email can't be blank")
       end
 
-      it 'can not have blank birthdate' do
+      it 'can not have blank birthday' do
        expect(user.errors.full_messages).to include("Birthday can't be blank")
       end
 
