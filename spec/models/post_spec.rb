@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   context 'test post validations' do
-    # user = User.first
-    post = Post.create(title:'some title',user_id:1) 
-    it 'can not have blank content' do
-      expect(post).to eq(false)
+    let(:post){Post.create(title:'some title') }
+
+    it 'can not create a post without user_id' do
+      expect(post.errors.full_messages).to include("User must exist")
     end
   end
 end
