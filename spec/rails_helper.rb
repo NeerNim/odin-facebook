@@ -5,6 +5,8 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require 'database_cleaner'
 require 'capybara/rspec'
+require "support/controller_macros.rb"
+require "support/request_macros.rb"
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -41,4 +43,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.extend ControllerMacros, :type => :request
+
+  config.include RequestMacros, :type => :request
+
+
 end
