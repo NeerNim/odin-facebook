@@ -25,12 +25,13 @@
     <%= f.date_field :birthday%>
   </div>
   <div class="field">
-    <%= f.radio_button :gender, 'male' %>
-    <%= f.label :gender, "Male" %>
-    <%= f.radio_button :gender, 'female' %>
-    <%= f.label :gender, "Female" %>
-    <%= f.radio_button :gender, 'custom' %>
-    <%= f.label :gender, "Custom" %>
+    <%= f.label :gender %><br />
+    <%= f.radio_button(:gender, "female") %>
+    <%= f.label(:gender_female, "female") %>
+    <%= f.radio_button(:gender, "male") %>
+    <%= f.label(:gender_male, "male") %>
+    <%= f.radio_button(:gender, "custom")%>
+    <%= f.label(:gender_custom, "custom")%>
   </div>
   <div class="actions">
     <%= f.submit "Sign up" %>
