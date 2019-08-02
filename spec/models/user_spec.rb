@@ -37,6 +37,7 @@ RSpec.describe User, type: :model do
         t = User.reflect_on_association(:posts)
         expect(t.macro).to eq(:has_many)
       end
+
    end
 
  
