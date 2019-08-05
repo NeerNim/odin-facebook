@@ -7,10 +7,10 @@ RSpec.feature 'Users', type: :feature do
     before(:each) do
       visit new_user_registration_path
       within('form') do
-        fill_in 'First name', with: 'john'
-        fill_in 'Last name', with: 'doe'
+        fill_in 'First Name', with: 'john'
+        fill_in 'Last Name', with: 'doe'
         fill_in 'Email', with: 'john@gmail.com'
-        fill_in 'Password', with: '123456'
+        fill_in 'New Password', with: '123456'
         fill_in 'Birthday', with: '12-12-1990'
         choose('male')
       end
@@ -18,12 +18,12 @@ RSpec.feature 'Users', type: :feature do
 
     scenario 'with valid input form fields' do
       click_button 'Sign up'
-      expect(page).to have_content('Logout')
+      expect(page).to have_content('Welcome! You have signed up successfully.')
     end
 
     scenario 'with invalid input form fields' do
       within('form') do
-        fill_in 'First name', with: ''
+        fill_in 'First Name', with: ''
       end
       click_button 'Sign up'
       expect(page).to have_content('First name can\'t be blank')
@@ -31,10 +31,10 @@ RSpec.feature 'Users', type: :feature do
 
     scenario 'with invalid input form fields' do
       within('form') do
-        fill_in 'First name', with: ''
-        fill_in 'Last name', with: ''
+        fill_in 'First Name', with: ''
+        fill_in 'Last Name', with: ''
         fill_in 'Email', with: ''
-        fill_in 'Password', with: ''
+        fill_in 'New Password', with: ''
       end
       click_button 'Sign up'
       expect(page).to have_content('First name can\'t be blank')
@@ -55,11 +55,11 @@ RSpec.feature 'Users', type: :feature do
         fill_in 'Password', with: '123456'
       end
       click_button 'Log in'
-      expect(page).to have_content('Logged in as john@gmail.com')
+      expect(page).to have_content('Signed in successfully.')
     end
   end
 
-  context 'User Sign Out' do
+  context 'Sign Out' do
     before(:each) do
       FactoryBot.create :user, email: 'john@gmail.com', password: '123456', password_confirmation: '123456', gender: 'male', birthday: Date.today
       visit user_session_path
@@ -68,7 +68,8 @@ RSpec.feature 'Users', type: :feature do
         fill_in 'Password', with: '123456'
       end
       click_button 'Log in'
-click_on 'Logout'
+      find('a.dropdown-toggle').click
+      click_on 'Log out'
     end
 
     scenario 'with valid email and password' do

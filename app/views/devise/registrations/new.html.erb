@@ -3,7 +3,7 @@
     <h2>Sign up</h2>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
-      <div class="form-row">
+      <div class="field">
         <div class="form-group col-md-6 no-padding">
           <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: 'First Name', class: 'form-control' %>
         </div>
