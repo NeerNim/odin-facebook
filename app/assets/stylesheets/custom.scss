@@ -101,7 +101,6 @@ input {
 
 /* universal */
 
-
 section {
   overflow: auto;
 }
@@ -148,6 +147,18 @@ p {
 
 /* header */
 
+.navbar-inverse 
+.navbar-nav > .open > a, 
+.navbar-inverse .navbar-nav > 
+.open > a:hover, 
+.navbar-inverse .navbar-nav > .open > a:focus{
+  background-color:transparent;
+}
+.navbar-right{
+  margin-top:34px;
+}
+
+
 .navbar {
   border-radius: 0;
   &.navbar-inverse{
@@ -169,8 +180,7 @@ p {
   font-size: 2em;  
   color: #fff;
   letter-spacing: 0.9px;
-  padding-top: 25px;
-  padding-bottom: 20px;
+  padding-top: 28px;
   font-weight: bold;
   &:hover {
     color: #fff;
