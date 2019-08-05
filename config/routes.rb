@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:new, :create, :show, :index]
-  resources :posts
+  resources :posts do
+    resources :likes
+  end
 end
