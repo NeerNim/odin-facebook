@@ -3,10 +3,9 @@ class LikesController < ApplicationController
 
   def create
     if already_liked?
-      flash[:notice] = "You already liked this post"
+      flash.now[:notice] = "You already liked this post"
     else
       @post.likes.create(user_id:current_user.id)
-      redirect_to @post
     end
   end
 
