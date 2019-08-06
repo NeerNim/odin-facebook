@@ -2,14 +2,17 @@
 
 class CommentsController < ApplicationController
   def new
-    @comment = Comment.new
+@post = Post.find(params[:post_id])
+@comment = @post.comments.build
   end
 
   def create
+    @post = Post.find(params[:post_id])
     @comment = current_user.comments.build(comment_params)
+    @comment.post = @post
     if @comment.save
       flash[:success] = 'Your comment has been created'
-      redirect_to user_comments_path
+      redirect_to posts_path
     else
       render 'new'
     end
@@ -18,6 +21,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:title, :body, :post_id)
+    params.require(:comment).permit(:title, :body)
   end
 end

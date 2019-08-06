@@ -1,2 +1,12 @@
+<h1><%= @post.title %></h1>
+
+<%= @post.content %>
+
 <%= button_to 'Like', post_likes_path(@post), method: :post %>
+
 <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+
+<% @post.comments.each do |comment| %>
+<%= comment.title %>
+<%= comment.body %>
+<% end %>

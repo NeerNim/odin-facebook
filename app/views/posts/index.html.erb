@@ -3,7 +3,7 @@
   <strong>Title: </strong><%= post.title %><br>
   <strong>Content: </strong><%= post.content %>
   <%= button_to 'Like', post_likes_path(post), method: :post %>
-  <%= button_to 'Comment', comments_path, method: :post %>
+  <%= link_to 'New Comment', new_post_comment_path(post) %>
   <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
   <hr>
 <% end %>
