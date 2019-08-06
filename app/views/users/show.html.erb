@@ -1,3 +1,13 @@
 <h1>User Profile</h1>
 
-<%= @user.email %>
+<strong>First Name: </strong><%= @user.first_name %><br>
+<strong>Last Name: </strong><%= @user.last_name %><br>
+<strong>Birthday: </strong><%= @user.birthday %><br>
+<strong>Email: </strong><%= @user.email %>
+
+<h1>All Posts</h1>
+
+<% @posts.each do |post| %>
+<strong>Title: </strong><%= post.title %><br>
+<strong>Content: </strong><%= post.content %>
+<% end %>
