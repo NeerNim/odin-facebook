@@ -1,5 +1,6 @@
 <h1>All Posts</h1>
 <% @posts.each do |post| %>
+  <%= post.user.first_name %><br>
   <strong>Title: </strong><%= post.title %><br>
   <strong>Content: </strong><%= post.content %>
   <hr>
