@@ -1,44 +1,68 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-   context 'test user validations' do
-      let(:user){User.create(first_name: " ", last_name: "", gender: "", email:'', birthday: "", password: '12') }     
-      let(:blank_password){User.create(password: '') }     
+  let(:valid_user) { FactoryBot.build(:user) }
+  let(:user_without_first_name) { FactoryBot.build(:user, first_name: nil) }
+  let(:user_without_last_name) { FactoryBot.build(:user, last_name: nil) }
+  let(:user_without_email) { FactoryBot.build(:user, email: nil) }
+  let(:user_without_password) { FactoryBot.build(:user, password: nil) }
+  let(:user_without_gender) { FactoryBot.build(:user, gender: nil) }
+  let(:user_without_birthday) { FactoryBot.build(:user, birthday: nil) }
 
-      it 'can not have blank first name' do
-       expect(user.errors.full_messages).to include("First name can't be blank")
-      end
+  context 'complete user details' do
+    it 'is valid' do
+      expect(valid_user).to be_valid
+    end
+  end
 
-      it 'can not have blank last name' do
-       expect(user.errors.full_messages).to include("Last name can't be blank")
-      end
+  context 'first name is missing' do
+    it 'is invalid' do
+      user_without_first_name.valid?
+      expect(user_without_first_name.errors['first_name']).to include("can't be blank")
+    end
+  end
 
-      it 'can not have blank email' do
-       expect(user.errors.full_messages).to include("Email can't be blank")
-      end
+  context 'first name is missing' do
+    it 'is invalid' do
+      user_without_last_name.valid?
+      expect(user_without_last_name.errors['last_name']).to include("can't be blank")
+    end
+  end
 
-      it 'can not have blank birthday' do
-       expect(user.errors.full_messages).to include("Birthday can't be blank")
-      end
+  context 'email is missing' do
+    it 'is invalid' do
+      user_without_email.valid?
+      expect(user_without_email.errors['email']).to include("can't be blank")
+    end
+  end
 
-      it 'can not have blank gender' do
-       expect(user.errors.full_messages).to include("Gender can't be blank")
-      end
+  context 'password is missing' do
+    it 'is invalid' do
+      user_without_password.valid?
+      expect(user_without_password.errors['password']).to include("can't be blank")
+    end
+  end
 
-      it 'can not have blank password' do
-       expect(blank_password.errors.full_messages).to include("Password can't be blank")
-      end
+  context 'gender is missing' do
+    it 'is invalid' do
+      user_without_gender.valid?
+      expect(user_without_gender.errors['gender']).to include("can't be blank")
+    end
+  end
 
-      it 'should have minimum of 6 lenght password' do
-       expect(user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
-      end
+  context 'birthday is missing' do
+    it 'is invalid' do
+      user_without_birthday.valid?
+      expect(user_without_birthday.errors['birthday']).to include("can't be blank")
+    end
+  end
 
-      it 'should belong to user' do
-        t = User.reflect_on_association(:posts)
-        expect(t.macro).to eq(:has_many)
-      end
-
-   end
-
- 
+  context 'assoication' do
+    it 'should belong to user' do
+      t = User.reflect_on_association(:posts)
+      expect(t.macro).to eq(:has_many)
+    end
+  end
 end
