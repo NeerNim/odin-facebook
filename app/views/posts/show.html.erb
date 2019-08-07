@@ -6,7 +6,4 @@
 
 <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
-<% @post.comments.each do |comment| %>
-<%= comment.title %>
-<%= comment.body %>
-<% end %>
+<%= render"shared/post_comments" %>
