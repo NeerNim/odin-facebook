@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.feature 'Editing User information', type: :feature do
   context 'update user' do 
-    let!(:user) {FactoryBot.create(:user, email: 'john@gmail.com', password: '123456', password_confirmation: '123456')}
+    let!(:user) {FactoryBot.create(:user)}
 
     before(:each) do    
       visit user_session_path
