@@ -11,6 +11,6 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
-  resources :users, only: [:new, :create, :show, :index]
+  resources :users, only: [:new, :create, :show, :index, :update]
   resources :posts
 end
