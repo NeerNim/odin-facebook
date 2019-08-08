@@ -10,4 +10,11 @@ RSpec.describe "Home page", :type => :request do
     expect(response).to render_template(:index) 
     
   end
+
+  it 'homepage for authenticated user' do 
+    get authenticated_root_path
+    expect(response.status).to eql 200 
+    expect(response.body).to include("Log in")
+  end
+  
 end
