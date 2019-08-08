@@ -17,6 +17,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    @comment = @post.comments.create(comment_params)
     if @post.save
       flash[success] = "Posts created!"
       redirect_to @post
@@ -29,5 +30,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :content)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:title, :body)
   end
 end
