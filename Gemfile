@@ -31,6 +31,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard'
   gem 'guard-rspec', require: false
+  gem 'hirb'
+  gem 'pry-rails'
 end
 
 group :test do
