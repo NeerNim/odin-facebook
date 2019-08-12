@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = Post.all
+    @users = User.all
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def new
@@ -17,9 +18,8 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    @comment = @post.comments.create(comment_params)
     if @post.save
-      flash[success] = "Posts created!"
+      flash[:success] = "Posts created!"
       redirect_to @post
     else
       render :new
