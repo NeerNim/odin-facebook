@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'friendships/new'
+  get 'friendships/index'
+  get 'friendships/show'
   devise_for :users
   devise_scope :user do
     authenticated :user do
@@ -16,4 +19,5 @@ Rails.application.routes.draw do
     resources :likes
     resources :comments
   end
+  resources :friendships
 end
