@@ -7,8 +7,7 @@ RSpec.describe "Home page", :type => :request do
   it 'display homepage for signed in users' do 
     sign_in user
     get posts_path
-    expect(response).to render_template(:index) 
-    
+    expect(response.body).to include("All Posts")    
   end
 
   it 'homepage for authenticated user' do 
