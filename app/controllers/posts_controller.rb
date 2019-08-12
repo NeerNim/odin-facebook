@@ -18,7 +18,6 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    @comment = @post.comments.create(comment_params)
     if @post.save
       flash[:success] = "Posts created!"
       redirect_to @post
