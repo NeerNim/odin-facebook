@@ -11,10 +11,11 @@ FactoryBot.define do
 
   factory :random_user, class: User do 
     first_name { Faker::Name.first_name }
-    first_name { Faker::Name.last_name }
+    last_name { Faker::Name.last_name }
     email { Faker:: Internet.email }
-    gender { Faker:: Gender.gender}
-    password { Faker:: Internet.password}
-    password_confirmation { Faker:: Internet.password}
+    gender { Faker:: Gender.binary_type}
+    birthday { Time.now }
+    password { "123456"}
+    password_confirmation { "123456"}
   end
 end

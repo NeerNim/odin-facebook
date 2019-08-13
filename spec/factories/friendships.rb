@@ -1,7 +1,9 @@
 FactoryBot.define do
   factory :friendship do
-    user { nil }
-    friend { nil }
+    user_id { 1 }
+    friend_id { 2 }
     confirmed { false }
+
+    association :user
   end
 end

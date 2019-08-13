@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     authenticated :user do
       root 'posts#index', as: :authenticated_root
+      resources :friendships
     end
 
     unauthenticated do
@@ -12,9 +13,10 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:new, :create, :show, :index]
+
   resources :posts do
     resources :likes
     resources :comments
   end
-  resources :friendships
+
 end

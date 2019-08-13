@@ -1,1 +1,5 @@
-<%= link_to "Add Friend", friendships_path(:friend_id => @users), :method => :post %>
+<% @users.each do |user| %>
+  <%= user.first_name%>
+  <%= link_to "Add a Friend", friendships_path(:friend_id => user ), :method => :post %>
+  <br>
+<% end %>
