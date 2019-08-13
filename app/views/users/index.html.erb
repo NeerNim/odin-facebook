@@ -1,5 +1,1 @@
-<%= render "shared/users" %>
-<h1>My Friends</h1>
-<% @friends.each do |f| %>
-  <%= f.id %><br>
-<% end %>
+<%= link_to "Add Friend", friendships_path(:friend_id => @users), :method => :post %>
