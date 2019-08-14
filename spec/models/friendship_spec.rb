@@ -4,7 +4,7 @@ RSpec.describe Friendship, type: :model do
   let(:user){FactoryBot.create(:user)}
   let(:friendship){FactoryBot.create(:friendship, user_id:user.id, friend_id:user.id)}
 
-  context "" do
+  context "valid friendship" do
     it {
       expect(friendship.valid?).to eq(true)
     }
