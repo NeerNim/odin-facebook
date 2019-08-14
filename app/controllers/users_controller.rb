@@ -6,15 +6,15 @@ class UsersController < ApplicationController
     @friends = current_user.friendships
   end
 
+  def new
+    @user = User.new
+  end
+  
   def show
-    @user = User.find(params[:id])
+    @user = current_user
+    @posts = @user.posts
   end
 
   def create
-  end
-
-  def show
-    @user = User.find(params[:id])
-    @posts = @user.posts
   end
 end
