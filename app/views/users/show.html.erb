@@ -1,16 +1,8 @@
-<h2>Friends</h2>
-<ul>
-  <% @user.friendships.each do |user| %>
-    <li>
-      <%= user.friend.first_name %>
-      (<%= link_to "remove", user, :method => :delete %>)
-    </li>
-  <% end %>
-</ul>
-<p><%= link_to "Find Friends", users_path %></p>
-<h2>Friended by Users</h2>
-<ul>
-  <% for user in @user.inverse_friends %>
-    <li><%= user.first_name %></li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="col-12 text-center">
+    <h3>Profile</h3>
+    <hr>
+    <h4>Name: <%= @user.first_name %></h4>
+    <h4>Email: <%= @user.email %></h4>
+  </div>
+</div>
