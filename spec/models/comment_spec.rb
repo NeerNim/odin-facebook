@@ -13,7 +13,7 @@ RSpec.describe Comment, type: :model do
   end
 
   context "comment belongs to post" do
-    it "is invalid" do
+    it "reflects the association" do
       t = Comment.reflect_on_association(:user)
       expect(t.macro).to eq(:belongs_to)
     end

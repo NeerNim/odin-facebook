@@ -1,4 +1,3 @@
-
 FactoryBot.define do
   factory :post do
   title { "test title" }
@@ -7,3 +6,4 @@ FactoryBot.define do
   association :user, factory: :user, strategy: :build
   end
 end 
+
