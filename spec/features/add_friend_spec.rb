@@ -15,7 +15,7 @@ RSpec.feature "AddFriends", type: :feature do
       end
       click_button 'Log in'
       visit users_path
-      expect(page).to have_link("Add a Friend")
+      expect(page).to have_link("Send Friend Request")
     end
   end
 end

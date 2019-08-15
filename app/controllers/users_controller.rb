@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @friends = current_user.friendships
   end
 
+
   def new
     @user = User.new
   end
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
     @posts = @user.posts
   end
 
+  
   def destroy
     @find_friend = current_user.friendships.find(params[:id])
     @find_friend.destroy
