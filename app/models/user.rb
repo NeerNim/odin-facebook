@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :friendships, dependent: :destroy
-  has_many :friends, through: :friendships
-  
+  has_many :friends, :through => :friendships
+    
 
   validates :first_name, presence: true, uniqueness: true
   validates :last_name, presence: true

@@ -33,7 +33,3 @@ end
 f1 = Friendship.create!(user: u1, friend: u2, confirmed: false)
 f2 = Friendship.create!(user: u2, friend: u1, confirmed: false)
 
-f1.update_attributes(confirmed: true)
-f2.update_attributes(confirmed: true)
-
-

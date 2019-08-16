@@ -6,9 +6,9 @@
     </div>
     <div class="col-sm-5">
       <% if current_user.friends.include?(user) %>
-        <%= button_tag "Friend Request Sent", disabled: true, class: 'btn btn-danger' %>
+        <%= button_tag "Already Friend", disabled: true, :method => :post, class: 'btn btn-danger' %>
       <% else %>
-        <%= link_to "Send Friend Request", "#", class: 'btn btn-primary' %>
+        <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post, class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>
