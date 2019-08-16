@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class FriendshipsController < ApplicationController
-  def index
+    def index
     @friends = current_user.friends
   end
   def create
