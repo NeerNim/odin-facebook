@@ -1,9 +1,19 @@
-User.create!(
+u1 = User.create!(
   first_name: "John",
   last_name: "Doe", 
   email: "john@gmail.com", 
   birthday: "20-10-1990", 
   gender: "female", 
+  password: "123456", 
+  password_confirmation: "123456" 
+)
+
+u2 = User.create!(
+  first_name: "Sara",
+  last_name: "Doe", 
+  email: "sara@gmail.com", 
+  birthday: "20-10-1990", 
+  gender: "male", 
   password: "123456", 
   password_confirmation: "123456" 
 )
@@ -26,6 +36,4 @@ f2 = Friendship.create!(user: u2, friend: u1, confirmed: false)
 f1.update_attributes(confirmed: true)
 f2.update_attributes(confirmed: true)
 
-f3 = Friendship.create!(user: u3, friend: u4, confirmed: false)
-f4 = Friendship.create!(user: u4, friend: u3, confirmed: false)
 
