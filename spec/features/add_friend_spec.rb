@@ -2,20 +2,66 @@ require 'rails_helper'
 
 RSpec.feature "AddFriends", type: :feature do
   context 'Add a Friend' do
+    let!(:user1) { FactoryBot.create :user, first_name: 'John', email: 'john@gmail.com' }
+    let!(:user2) { FactoryBot.create :user, first_name: 'Mike', email: 'mike@gmail.com' }
+
     before(:each) do
-      FactoryBot.create :user, email: 'john@gmail.com', password: '123456', password_confirmation: '123456', gender: 'male', birthday: Date.today
-      visit user_session_path     
-      FactoryBot.create :random_user, email: 'john1@gmail.com', password: '123456', password_confirmation: '123456', gender: 'male', birthday: Date.today
- 
-    end
-      scenario 'with valid email and password' do
+      visit user_session_path
       within('form') do
         fill_in 'Email', with: 'john@gmail.com'
         fill_in 'Password', with: '123456'
       end
       click_button 'Log in'
+    end
+
+    scenario 'adding a friend' do
       visit users_path
-      expect(page).to have_link("Add Friend")
+
+      click_button 'Add Friend'
+      expect(page).to have_text("Friend Request Sent")
+    end
+  end
+
+  context "friendship requests" do
+    let(:user1) { FactoryBot.create :user, first_name: 'John', email: 'john@gmail.com' }
+    let(:user2) { FactoryBot.create :user, first_name: 'Mike', email: 'mike@gmail.com' }
+
+    before(:each) do
+      user1.friendships.create!(friend: user2, confirmed: false)
+
+      visit user_session_path
+      within('form') do
+        fill_in 'Email', with: 'mike@gmail.com'
+        fill_in 'Password', with: '123456'
+      end
+      click_button 'Log in'
+    end
+
+    scenario 'confirm friendship request' do
+      visit new_friendship_path
+
+      expect(page).to have_text("John")
+
+      click_button 'Confirm'
+
+      expect(page).to_not have_text("John")
+
+      visit friendships_path
+
+      expect(page).to have_text("John")
+    end
+
+    scenario 'reject friendship request' do
+      visit new_friendship_path
+
+      expect(page).to have_text("John")
+
+      click_button 'Reject'
+
+      expect(page).to_not have_text("John")
+
+      visit friendships_path
+      expect(page).to_not have_text("John")
     end
   end
 end
