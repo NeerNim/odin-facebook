@@ -2,44 +2,37 @@
 
 class FriendshipsController < ApplicationController
   def index
-    
+    @friendships = current_user.friendships.where(confirmed: true)
   end
-  
-  def new 
-    @pending_requests = current_user.pending_friends
-    
+
+  def new
+    @incoming_friend_requests = current_user.incoming_friend_requests
   end
-    
+
   def create
-    @new_friendship = Friendship.new(friendship_params)    
+    @new_friendship = Friendship.new(user: current_user, friend_id: params[:friend_id])
     if @new_friendship.save!
-    flash[:notice] = 'Confirmation sent'  
-    redirect_to new_friendship_path
+      flash[:notice] = 'Confirmation sent'
     else
-    flash[:notice] = 'Cannot send twice'  
-    redirect_to friendships_path
+      flash[:notice] = 'Cannot send twice'
     end
+    redirect_to users_path
   end
 
   def update
-    @confirm_request = current_user.friendships.find(params[:id])
-    @confirm_request.update(confirmed:true)
-    flash[:notice] = 'You are now Friends'      
+    @confirm_request = current_user.incoming_friend_requests.find(params[:id])
+    @confirm_request.confirm
+    flash[:notice] = 'You are now Friends'
+    redirect_to new_friendship_path
   end
 
   def destroy
-    @friendship = current_user.friendships.find(params[:id])
+    @friendship = Friendship
+      .where(friend: current_user)
+      .or(Friendship.where(user: current_user))
+      .find(params[:id])
     @friendship.destroy
     flash[:notice] = 'Removed friendship.'
-    redirect_to current_user
+    redirect_to new_friendship_path
   end
-
-  private
-
-  def friendship_params
-    params.require(:friendships).permit(:user_id, :friend_id, :confirmed)
-  end
-
 end
-
-

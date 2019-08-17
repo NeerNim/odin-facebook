@@ -15,7 +15,12 @@ class User < ApplicationRecord
   validates :gender, presence: true
   scope :all_except, ->(user) { where.not(id: user) }
 
-  def pending_friends
+  def sent_friend_requests
+    Friendship.where(['user_id = ? and confirmed = ?', id, false])
+  end
+
+  def incoming_friend_requests
     Friendship.where(['friend_id = ? and confirmed = ?', id, false])
   end
 end
+
