@@ -8,7 +8,7 @@
       <% if current_user.friends.include?(user) %>
         <%= button_tag "Already Friend", disabled: true, :method => :post, class: 'btn btn-danger' %>
       <% else %>
-        <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post, class: 'btn btn-primary' %>
+        <%= link_to "Add Friend", friendships_path(:friendships => { user_id: current_user.id, friend_id: user.id, confirmed: false }), method: :post, class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>

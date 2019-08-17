@@ -1,5 +1,6 @@
 class Friendship < ApplicationRecord
   after_create :create_inverse_relationship
+  after_update :update_relationship
   after_destroy :destroy_inverse_relationship
   
   belongs_to :user
@@ -14,6 +15,11 @@ class Friendship < ApplicationRecord
 
   def create_inverse_relationship
     friend.friendships.create(friend: user)
+  end
+
+  def update_relationship
+    find_request = friend.friendships.find_by(friend: user)
+    find_request.update_attributes(confirmed:true) if find_request
   end
 
   def destroy_inverse_relationship

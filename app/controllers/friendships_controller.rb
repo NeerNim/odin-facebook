@@ -1,18 +1,30 @@
 # frozen_string_literal: true
 
 class FriendshipsController < ApplicationController
-    def index
-    @friends = current_user.friends
+  def index
+    
   end
+  
+  def new 
+    @pending_requests = current_user.pending_friends
+    
+  end
+    
   def create
-    @friendship = current_user.friendships.build(friend_id: params[:friend_id])
-    if @friendship.save
-      flash[:notice] = 'Added friend.'
-      redirect_to users_path
+    @new_friendship = Friendship.new(friendship_params)    
+    if @new_friendship.save!
+    flash[:notice] = 'Confirmation sent'  
+    redirect_to new_friendship_path
     else
-      flash[:error] = 'Unable to add friend.'
-      redirect_to users_path
+    flash[:notice] = 'Cannot send twice'  
+    redirect_to friendships_path
     end
+  end
+
+  def update
+    @confirm_request = current_user.friendships.find(params[:id])
+    @confirm_request.update(confirmed:true)
+    flash[:notice] = 'You are now Friends'      
   end
 
   def destroy
@@ -21,4 +33,13 @@ class FriendshipsController < ApplicationController
     flash[:notice] = 'Removed friendship.'
     redirect_to current_user
   end
+
+  private
+
+  def friendship_params
+    params.require(:friendships).permit(:user_id, :friend_id, :confirmed)
+  end
+
 end
+
+
