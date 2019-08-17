@@ -1,6 +1,6 @@
 <h1>Notifications</h1>
 <div class="row">
-  <% @pending_requests.each do |request| %>
+  <% @incoming_friend_requests.each do |request| %>
     <div class="col-sm-5 col-sm-offset-2">
       <h3><%= request.user.first_name %></h3>
     </div>
@@ -11,7 +11,7 @@
             <%= button_to "Confirm", friendship_path(request.id), :method => :patch,  class: 'btn btn-success' %>
           </div>
           <div class="col-sm-2">
-            <%= button_to "Reject",  friendship_path(request.user.id), class: 'btn btn-danger' %>
+            <%= button_to "Reject", friendship_path(request.id), method: :delete, class: 'btn btn-danger' %>
           </div>
         <% end %>
       </div>

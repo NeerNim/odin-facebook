@@ -5,10 +5,10 @@
       <h3 class="display-4"><%= user.first_name%></h3>
     </div>
     <div class="col-sm-5">
-      <% if current_user.friends.include?(user) %>
-        <%= button_tag "Already Friend", disabled: true, :method => :post, class: 'btn btn-danger' %>
+      <% if current_user.friendships.exists?(friend: user) %>
+        Friend Request Sent
       <% else %>
-        <%= link_to "Add Friend", friendships_path(:friendships => { user_id: current_user.id, friend_id: user.id, confirmed: false }), method: :post, class: 'btn btn-primary' %>
+        <%= button_to "Add Friend", friendships_path(friend_id: user.id), method: :post, class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>
