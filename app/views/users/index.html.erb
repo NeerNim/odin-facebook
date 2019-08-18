@@ -5,11 +5,14 @@
       <h3 class="display-4"><%= user.first_name%></h3>
     </div>
     <div class="col-sm-5">
-      <% if current_user.friendships.exists?(friend: user) %>
-        Friend Request Sent
+      <% if current_user.friendships.exists?(friend: user, confirmed: false) %>
+        <p>Friend Request Sent</p>
+      <% elsif current_user.friendships.exists?(friend: user, confirmed: true) %>
+        <p>friends</p>
       <% else %>
         <%= button_to "Add Friend", friendships_path(friend_id: user.id), method: :post, class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>
 <% end %>
+<br>
