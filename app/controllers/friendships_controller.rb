@@ -10,7 +10,8 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    @new_friendship = Friendship.new(user: current_user, friend_id: params[:friend_id])
+    @new_friendship = Friendship
+      .new(user: current_user, friend_id: params[:friend_id])
     if @new_friendship.save!
       flash[:notice] = 'Confirmation sent'
     else

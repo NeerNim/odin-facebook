@@ -27,7 +27,7 @@ RSpec.feature "AddFriends", type: :feature do
     let(:user2) { FactoryBot.create :user, first_name: 'Mike', email: 'mike@gmail.com' }
 
     before(:each) do
-      user1.friendships.create!(friend: user2, confirmed: false)
+      user1.friendships.create!(friend: user2)
 
       visit user_session_path
       within('form') do
