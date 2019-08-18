@@ -36,23 +36,19 @@ RSpec.feature "AddFriends", type: :feature do
       end
       click_button 'Log in'
     end
-
     scenario 'confirm friendship request' do
-      visit new_friendship_path
+      visit notifications_new_path
 
-      expect(page).to have_text("John")
+      expect(page).to have_text("John")      
 
       click_button 'Confirm'
-
-      expect(page).to_not have_text("John")
-
-      visit friendships_path
-
+      visit friendships_path            
+      
       expect(page).to have_text("John")
     end
 
     scenario 'reject friendship request' do
-      visit new_friendship_path
+      visit notifications_new_path
 
       expect(page).to have_text("John")
 

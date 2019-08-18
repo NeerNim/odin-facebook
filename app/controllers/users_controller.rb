@@ -11,6 +11,4 @@ class UsersController < ApplicationController
     @posts = @user.posts
   end
 
-  def new
-  end
 end

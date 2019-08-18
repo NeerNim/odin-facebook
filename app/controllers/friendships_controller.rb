@@ -24,7 +24,7 @@ class FriendshipsController < ApplicationController
     @confirm_request = current_user.incoming_friend_requests.find(params[:id])
     @confirm_request.confirm
     flash[:notice] = 'You are now Friends'
-    redirect_to new_friendship_path
+    redirect_to friendships_path
   end
 
   def destroy
@@ -34,6 +34,6 @@ class FriendshipsController < ApplicationController
       .find(params[:id])
     @friendship.destroy
     flash[:notice] = 'Removed friendship.'
-    redirect_to new_friendship_path
+    redirect_to friendships_path
   end
 end
