@@ -1,12 +1,25 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
+
   def index
-    @users = User.all
+    @users = User.all_except(current_user)    
+
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @posts = @user.posts
   end
+
+  def new
+  end
+
+  def create
+    @friendship = Friendship.new(:friend)
+  end
+
+ 
+
+
 end

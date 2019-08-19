@@ -30,6 +30,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard'
   gem 'guard-rspec', require: false
+  gem 'hirb'
+  gem 'pry-rails'
 end
 
 group :test do
@@ -38,6 +40,7 @@ group :test do
   gem 'webdrivers'
   gem 'database_cleaner'
   gem "capybara"
+  gem 'shoulda-matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -1,0 +1,9 @@
+<h1>Friends</h1>
+<div class="row">
+  <% @friends.each do |friendship| %>
+    <div class="col-sm-5 col-sm-offset-3">
+      <h3><%= friendship.first_name %></h3>
+      <%= link_to "Remove Friend", friendship_path(current_user.friendships.find_by_friend_id(friendship)), :method => :delete, class: "btn btn-danger" %>
+    </div>
+  <% end %>
+</div>
