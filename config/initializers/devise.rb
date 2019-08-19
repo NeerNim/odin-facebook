@@ -163,7 +163,7 @@ Devise.setup do |config|
   # Options to be passed to the created cookie. For instance, you can set
   # secure: true in order to force SSL only cookies.
   # config.rememberable_options = {}
-  config.omniauth :facebook, "APP_ID", "APP_SECRET", token_params: { parse: :json }
+  config.omniauth :facebook, "1515914758550519", "db265ba7abf7650fec754e2dc5998dfa", callback_url: "http://localhost:3000/users/auth/facebook/callback"
 
   # ==> Configuration for :validatable
   # Range for password length.
@@ -297,4 +297,6 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+
+  # config.omniauth :facebook, "1515914758550519", "db265ba7abf7650fec754e2dc5998dfa", callback_url: "http://localhost:3000/users/auth/facebook/callback"
 end

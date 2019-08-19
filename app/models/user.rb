@@ -2,13 +2,14 @@
 
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+         :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook] 
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships, source: :user
+
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -20,7 +21,10 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
-      user.first_name = auth.info.first_name  
+      user.first_name = auth.info.name   
+      user.last_name = "last_name"
+      user.gender = "gender"
+      user.birthday = Time.now
     end
   end
   
