@@ -49,7 +49,6 @@ RSpec.feature "AddFriends", type: :feature do
 
     scenario 'reject friendship request' do
       visit notifications_new_path
-      save_and_open_page
       expect(page).to have_text("John")
 
       click_button 'Reject'
