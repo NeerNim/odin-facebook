@@ -4,12 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook] 
 
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :likes, dependent: :destroy
+  has_many :likes, dependent: :destroy  
   has_many :friendships, dependent: :destroy
-  has_many :friends, through: :friendships, source: :user
 
+  has_many :friends, through: :friendships, source: :user
 
   validates :first_name, presence: true
   validates :last_name, presence: true
