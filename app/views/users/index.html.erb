@@ -6,9 +6,9 @@
     </div>
     <div class="col-sm-5">
       <% if current_user.friendships.exists?(friend: user, confirmed: false) %>
-        <%= button_tag "Friend Request Sent", class: 'btn btn-info' %>
+        <%= button_tag "Friend Request Sent", disabled:true, class: 'btn btn-danger' %>
       <% elsif current_user.friendships.exists?(friend: user, confirmed: true) %>
-        <%= button_tag "You Both are Friends", class: 'btn-secondary active' %>
+        <%= button_tag "You Both are Friends", disabled:true, class: 'btn-secondary active' %>
       <% else %>
         <%= button_to "Add Friend", friendships_path(friend_id: user.id), method: :post, class: 'btn btn-primary' %>
       <% end %>

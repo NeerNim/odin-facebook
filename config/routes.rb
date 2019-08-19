@@ -18,6 +18,6 @@ Rails.application.routes.draw do
     resources :likes
     resources :comments
   end
-  resources :friendships
+  resources :friendships, only: [:new, :index, :show]
   get 'notifications/new'
 end

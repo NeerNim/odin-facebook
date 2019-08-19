@@ -5,9 +5,6 @@ class FriendshipsController < ApplicationController
     @friendships = current_user.friendships.where(confirmed: true)
   end
 
-  def new
-    @incoming_friend_requests = current_user.incoming_friend_requests
-  end
 
   def create
     @new_friendship = Friendship
