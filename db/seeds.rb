@@ -1,22 +1,22 @@
-u1 = User.create!(
-  first_name: "John",
-  last_name: "Doe", 
-  email: "john@gmail.com", 
-  birthday: "20-10-1990", 
-  gender: "female", 
-  password: "123456", 
-  password_confirmation: "123456" 
-)
+# u1 = User.create!(
+#   first_name: "John",
+#   last_name: "Doe", 
+#   email: "john@gmail.com", 
+#   birthday: "20-10-1990", 
+#   gender: "female", 
+#   password: "123456", 
+#   password_confirmation: "123456" 
+# )
 
-u2 = User.create!(
-  first_name: "Sara",
-  last_name: "Doe", 
-  email: "sara@gmail.com", 
-  birthday: "20-10-1990", 
-  gender: "male", 
-  password: "123456", 
-  password_confirmation: "123456" 
-)
+# u2 = User.create!(
+#   first_name: "Sara",
+#   last_name: "Doe", 
+#   email: "sara@gmail.com", 
+#   birthday: "20-10-1990", 
+#   gender: "male", 
+#   password: "123456", 
+#   password_confirmation: "123456" 
+# )
 
 10.times do 
   User.create!(
@@ -30,6 +30,6 @@ u2 = User.create!(
   )
 end
 
-f1 = Friendship.create!(user: u1, friend: u2, confirmed: false)
-f2 = Friendship.create!(user: u2, friend: u1, confirmed: false)
+# f1 = Friendship.create!(user: u1, friend: u2, confirmed: false)
+# f2 = Friendship.create!(user: u2, friend: u1, confirmed: false)
 
