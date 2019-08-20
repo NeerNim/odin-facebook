@@ -43,4 +43,10 @@ class User < ApplicationRecord
   def incoming_friend_requests
     Friendship.where(['friend_id = ? and confirmed = ?', id, false])
   end
+
+  
+  def feed
+    Post.where('user_id in (SELECT friend_id FROM friendships WHERE
+      user_id = :user) or user_id = :user', user: self.id).order(created_at: :desc)
+  end
 end
