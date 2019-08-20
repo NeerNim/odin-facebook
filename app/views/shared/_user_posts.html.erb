@@ -1,5 +1,5 @@
 <% @posts.each do |post| %>
-  <% if current_user == post.user %>
+  <%# <% if current_user == post.user %>
     <%= link_to post.user.first_name, user_path(post.user) %><br>
     <strong>Title: </strong><%= post.title %><br>
     <strong>Content: </strong><%= post.content %>
@@ -16,6 +16,6 @@
     <% end %>
     <%= link_to 'New Comment', new_post_comment_path(post) %>
     <hr>
-    <% end %>
+    <%# <% end %>
 <% end %>
 

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @users = User.all
-    @posts = Post.all.order(created_at: :desc)
+    @posts = current_user.posts.all.order(created_at: :desc)
   end
 
   def new
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "Posts created!"
-      redirect_to @post
+      redirect_to authenticated_root_path
     else
       render :new
     end
