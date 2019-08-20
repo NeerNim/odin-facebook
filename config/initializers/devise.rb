@@ -163,7 +163,7 @@ Devise.setup do |config|
   # Options to be passed to the created cookie. For instance, you can set
   # secure: true in order to force SSL only cookies.
   # config.rememberable_options = {}
-  config.omniauth :facebook, "1515914758550519", "db265ba7abf7650fec754e2dc5998dfa", callback_url: "http://localhost:3000/users/auth/facebook/callback"
+  config.omniauth :facebook, "1515914758550519", "db265ba7abf7650fec754e2dc5998dfa", callback_url: "https://salty-refuge-85039.herokuapp.com/users/auth/facebook/callback"
 
   # ==> Configuration for :validatable
   # Range for password length.
