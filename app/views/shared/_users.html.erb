@@ -1,0 +1,5 @@
+<% @users.each do |user| %>
+  <%= user.first_name %>
+  <%= link_to 'Add a friend', "#", class: "btn btn-default" %>
+  <br>
+<% end %>

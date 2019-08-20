@@ -1,0 +1,18 @@
+<h1>Users</h1>
+<% @users.each do |user| %>
+  <div class="row">
+    <div class="col-sm-5 col-sm-offset-2">
+      <h3 class="display-4"><%= user.first_name%></h3>
+    </div>
+    <div class="col-sm-5">
+      <% if current_user.friendships.exists?(friend: user, confirmed: false) %>
+        <%= button_tag "Friend Request Sent", disabled:true, class: 'btn btn-danger' %>
+      <% elsif current_user.friendships.exists?(friend: user, confirmed: true) %>
+        <%= button_tag "You Both are Friends", disabled:true, class: 'btn-secondary active' %>
+      <% else %>
+        <%= button_to "Add Friend", friendships_path(friend_id: user.id), method: :post, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<br>

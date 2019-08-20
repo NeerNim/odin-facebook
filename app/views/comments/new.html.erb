@@ -1,0 +1,6 @@
+<h2>Comments</h2>
+<%= form_for([@post, @comment]) do |f| %>
+  <%= f.label :body%>
+  <%= f.text_area :body, autofocus: true, autocomplete: "body", class: 'form-control' %>
+  <%= f.submit "Add Comment", class: 'btn btn-primary'%>
+<% end %>
